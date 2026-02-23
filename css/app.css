@@ -1,0 +1,143 @@
+/* ------------------------------------------------------
+   IMPORTS
+------------------------------------------------------- */
+
+/* Coca-Cola inspired script font */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+/* ------------------------------------------------------
+   TAILWIND DIRECTIVES
+------------------------------------------------------- */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ------------------------------------------------------
+   ACCESSIBILITY & FORM DEFAULTS
+------------------------------------------------------- */
+
+@layer base {
+  /* Make sure form controls keep their native appearance where useful */
+  input,
+  textarea,
+  select,
+  button {
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    appearance: auto !important;
+    pointer-events: auto !important;
+    caret-color: auto !important;
+  }
+
+  /* Force normal textfield behavior */
+  input[type="text"],
+  input[type="search"],
+  textarea {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    pointer-events: auto !important;
+    caret-color: initial !important;
+  }
+
+  /* Number inputs: keep spinners by default */
+  input[type="number"] {
+    -webkit-appearance: number-input !important;
+    appearance: number-input !important;
+    pointer-events: auto !important;
+    caret-color: auto !important;
+  }
+
+  /* Restore select native chevron */
+  select {
+    -webkit-appearance: menulist !important;
+    appearance: auto !important;
+    pointer-events: auto !important;
+  }
+
+  /* Ensure focus outlines remain accessible */
+  :focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: rgba(37, 99, 235, 0.5);
+  }
+
+  /* Helper: only use appearance:none on very narrow selectors */
+  .custom-appearance-none {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+
+
+/* ------------------------------------------------------
+   COCA-COLA DASHBOARD STYLES
+------------------------------------------------------- */
+
+@layer components {
+
+  /* Coca-Cola style heading font */
+  .coke-brand {
+    font-family: 'Lobster', cursive;
+    letter-spacing: 0.5px;
+  }
+
+  /* Main Coke red gradient button (big capsule) */
+  .btn-coke {
+    @apply inline-flex items-center justify-center
+           px-6 py-2 rounded-full font-bold text-white
+           shadow-lg transition-transform duration-150
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600;
+    background: radial-gradient(circle at 30% 20%,
+                #ffcccc 0%, #ff4d4d 25%, #640606 60%, #cc6f6f 100%);
+  }
+
+  .btn-coke:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  .btn-coke:active {
+    transform: translateY(0);
+    filter: brightness(0.92);
+  }
+
+  /* Small Coke capsule button (for links, filters, etc.) */
+  .btn-coke-soft {
+    @apply inline-flex items-center justify-center
+           px-4 py-1.5 rounded-full font-semibold text-white
+           shadow-sm text-xs transition duration-150;
+    background: linear-gradient(to bottom, #ff4040, #b80000);
+  }
+
+  .btn-coke-soft:hover {
+    filter: brightness(1.1);
+  }
+
+  /* Optional: Coke-styled card container */
+  .coke-card {
+    @apply bg-white shadow-xl rounded-2xl p-6 border border-red-200
+           transition hover:shadow-2xl hover:border-red-400;
+  }
+}
+@layer components {
+
+    .sub-tab {
+        @apply flex items-center gap-2 px-4 py-2 
+               text-gray-600 font-medium text-sm
+               border-b-4 border-transparent
+               hover:text-red-600 hover:border-red-300
+               transition-all duration-200 cursor-pointer;
+    }
+
+    .sub-tab-active {
+        @apply text-red-700 border-red-700 font-bold coke-brand;
+    }
+
+}
+
+
+/* End of file */
